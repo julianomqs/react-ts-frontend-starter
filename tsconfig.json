@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "jsx": "react",
+    "module": "commonjs",
+    "noEmit": true,
+    "sourceMap": true,
+    "target": "es2020"
+  },
+  "include": ["src", "webpack.common.ts", "webpack.dev.ts", "webpack.prod.ts"]
+}

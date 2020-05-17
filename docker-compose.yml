@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  frontend:
+    build: .
+    command: sh command.sh
+    env_file: .env
+    healthcheck:
+      test: curl -f http://localhost:8080 || exit 1
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 10s
+    init: true
+    ports:
+      - "${CLIENT_PORT}:8080"
+    restart: on-failure
+    user: node
+    volumes:
+      - .:/home/node/app
+      - ./.git:/home/node/app/.git
+      - npm_cache_client:/home/node/.npm
+    working_dir: /home/node/app
+
+volumes:
+  npm_cache_client:
